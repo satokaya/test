@@ -1,0 +1,129 @@
+body{background-color:#000000;} .row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.w100 {
+height:100%;
+}
+.poster_title
+{color: #FFFFFF;
+font-weight:bold;
+margin-bottom:18px;
+}
+.parent-container {
+	position: relative;
+}
+
+.video-container {
+	z-index: -1;
+}
+.description
+{width:100%;
+ max-width: 640px;
+ color:#FFFFFF;
+ padding:16px;
+ 
+ }
+.welcome {
+	position: absolute;
+	display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+}
+.catalog_link
+{float:left;
+margin: 0 auto; 
+text-align:left;
+color:#FFFFFF;
+font-weight:bold;
+width: 100%;
+    max-width: 640px;
+}
+.btn_link
+{
+    background-color: #424242;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+	font-weight:bold;
+	 margin: 4px; 
+	text-decoration:none;display: inline-block;
+}.btn_link:hover {
+    background-color: #212121;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+ /* min-height: 80vh;*/
+}
+
+.poster_feed{
+margin:10px;
+
+}
+.poster_feed img{
+width:100%;
+max-width:620px
+}
+
+video{
+width:100%;
+max-width:640px;
+max-height:360px;
+height: auto;
+}
+
+.error_404_text
+{font-size:24px;
+color:#FFFFFF;
+margin:12px;
+}
+
+
+input[type=search] {
+    width: 100%;
+	max-width:620px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('img/searchicon.png');
+    background-position:  10px 10px ; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+	
+	/*
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;*/
+}
+#search_btn{
+display:none;
+}
+input[type=search]:focus {
+    width: 100%;
+	max-width:620px;
+}
+
+input[type=submit] {
+    background-color: #424242;
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+	font-weight:bold;
+	margin:15px;
+}
+
+input[type=submit]:hover {
+    background-color: #212121;
+}
