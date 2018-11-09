@@ -22,6 +22,14 @@ var keyword = getKeywordFormUrl('q');
 	 }
 };
 
+ function userWatchingUrl() {
+	var url = window.location.href ;
+	 var res = url.split("/");
+	 if(res[3]=='w')
+	 {
+		 return 1;
+	 }
+};
 
 $( document ).ready(function()
 {
@@ -190,7 +198,13 @@ function getDocHeight() {
       if  ($(window).scrollTop() == $(document).height() - $(window).height()){
 		// alert( $(".user_data").data('cpage')  );
 
+		if(userWatchingUrl()==1){
+			
+			}
+		else
+		{
           sendRequestServer( 'DATE','DESC', 5  );
+		}
       }
 	  /*
 	  	   addHeight=(window.innerHeight*0.5);
