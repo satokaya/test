@@ -43,7 +43,7 @@ $( document ).ready(function()
 										e.preventDefault();
 										var y = document.getElementById("mov789").clientHeight;
 									
-										if($(this).scrollTop()+window.innerHeight > (y)*0.99)
+										if($(this).scrollTop()+window.innerHeight > (y)*0.95)
 										{
 												 sendRequestServer( 'DATE','DESC', 5  );
 										 isWorking=1;
