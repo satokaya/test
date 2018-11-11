@@ -30,9 +30,30 @@ var keyword = getKeywordFormUrl('q');
 		 return 1;
 	 }
 };
-
+var isWorking = 0;
 $( document ).ready(function()
 {
+	// scroll content
+	
+						window.addEventListener('scroll', function ( e ) 
+						{
+						
+								if(isWorking==0 )  
+   								 {
+										e.preventDefault();
+										var y = document.getElementById("mov789").clientHeight;
+									
+										if($(this).scrollTop()+window.innerHeight > (y)*0.99)
+										{
+												 sendRequestServer( 'DATE','DESC', 5  );
+										 isWorking=1;
+										 setTimeout(function(){isWorking=0},2500);
+										}
+
+									}
+						});
+	
+	// scroll content
 	// chage img src
 	$('.poster').each(function() {
 		var imageDataSource = $(this).data('src').toString();
@@ -190,8 +211,7 @@ function getDocHeight() {
     );
 }
 
-
-
+/*
  $(window).scroll(function(){
 						   
 						   
@@ -206,17 +226,7 @@ function getDocHeight() {
           sendRequestServer( 'DATE','DESC', 5  );
 		}
       }
-	  /*
-	  	   addHeight=(window.innerHeight*0.5);
-		   console.log(($(this).scrollTop()+'***'+addHeight)+'**'+((document.getElementById("feed_con").clientHeight)) );
-		   
-		   
-		   	if($(this).scrollTop()+addHeight>((document.getElementById("feed_con").clientHeight)*0.9))
-			{ 
-				sendRequestServer( 'DATE','DESC', 5  );
-			}*/
  });    
 
-
-
+*/
 
