@@ -9,7 +9,7 @@
 
 
 var global_dir="/xhr.php";
-var page=1,offset=5,lastQueryId=0;
+var page=1,offset=15,lastQueryId=0;
 
 var keyword = getKeywordFormUrl('q');
 //console.log(keyword);
@@ -43,9 +43,9 @@ $( document ).ready(function()
 										e.preventDefault();
 										var y = document.getElementById("mov789").clientHeight;
 									
-										if($(this).scrollTop()+window.innerHeight > (y)*0.95)
+										if($(this).scrollTop()+window.innerHeight > (y)*0.70)
 										{
-												 sendRequestServer( 'DATE','DESC', 5  );
+												 sendRequestServer( 'DATE','DESC', 15  );
 										 isWorking=1;
 										 setTimeout(function(){isWorking=0},2500);
 										}
@@ -70,7 +70,7 @@ $(".search_staff").on("submit",function (event) {
   
 		fd.append('sort_type','DATE');
 		fd.append('increment','DESC');
-		fd.append('limit_member',5); 
+		fd.append('limit_member',15); 
 		fd.append('offset', 0 ); 
 		
 	 var etcData = $(this).serializeArray();
@@ -143,9 +143,9 @@ function chageSRCtofit(imageDataSource)
 	{
 		//	alert(imageDataSource.indexOf("blogspot.com"));
 		var w = window.innerWidth;
-		if(w>640)
+		if(w>160)
 		{
-			w=640;
+			w=160;
 		}
 		var res = imageDataSource.split("/");
 		var newUrl = imageDataSource.replace(res[7], "w"+w);

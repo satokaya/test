@@ -11,6 +11,7 @@ height:100%;
 {color: #FFFFFF;
 font-weight:bold;
 margin-bottom:18px;
+max-width:160px;
 }
 .parent-container {
 	position: relative;
@@ -67,11 +68,12 @@ width: 100%;
 
 .poster_feed{
 margin:10px;
+display:inline-block;
 
 }
 .poster_feed img{
 width:100%;
-max-width:620px
+max-width:160px
 }
 
 video{
@@ -108,6 +110,7 @@ input[type=search] {
 #search_btn{
 display:none;
 }
+
 input[type=search]:focus {
     width: 100%;
 	max-width:620px;
@@ -126,4 +129,11 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: #212121;
+}
+
+.main_con{
+max-width:620px;  
+margin: 10px auto;
+  position: relative;
+  text-align:center;
 }
