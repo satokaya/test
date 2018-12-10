@@ -4142,7 +4142,7 @@ typeof navigator === "object" && (function () {
 	      var player = new Plyr(selector, {
 	        debug: true,
 	        title: 'View From A Blue Moon',
-	        iconUrl: '../dist/plyr.svg',
+	        iconUrl: '//rawcdn.githack.com/satokaya/test/9b7faf0080c2c1401d7392a8856220e83a3efbad/dist/plyr.svg',
 	        keyboard: {
 	          global: true
 	        },
