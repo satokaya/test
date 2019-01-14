@@ -33,6 +33,10 @@ var keyword = getKeywordFormUrl('q');
 var isWorking = 0;
 $( document ).ready(function()
 {
+	if ($("#social_group_btn").hasClass("social_group_btn")) {
+			var cUrl=window.location.href ;
+		  $('.social_group_btn').html('<a href="mailto:?Subject=เขียนอะไรบางอย่าง&amp;Body=เช่น มาดูเรื่องนี้สนุกดี '+cUrl+'" target="_blank"><img src="https://rawcdn.githack.com/satokaya/test/e91992228018b10973336b099c5125489dfdc1bb/sent-mail.png" /></a><a href="http://www.facebook.com/sharer.php?u='+cUrl+'" target="_blank"><img src="https://rawcdn.githack.com/satokaya/test/e91992228018b10973336b099c5125489dfdc1bb/facebook.png" /></a><a href="https://twitter.com/share?url='+cUrl+'&amp;text=เขียนอะไรบางอย่าง&amp;hashtags=mov789" target="_blank"><img src="https://rawcdn.githack.com/satokaya/test/e91992228018b10973336b099c5125489dfdc1bb/twitter-logo-on-black-background.png" /></a><a href="https://plus.google.com/share?url='+cUrl+'" target="_blank"><img src="https://rawcdn.githack.com/satokaya/test/e91992228018b10973336b099c5125489dfdc1bb/google-plus-symbol.png" /></a>');
+		}
 	// scroll content
 	
 						window.addEventListener('scroll', function ( e ) 
@@ -138,7 +142,9 @@ function fetchListFormJSONobj(res_obj)
 }
 function chageSRCtofit(imageDataSource)
 {
-
+	if(imageDataSource==''){
+		imageDataSource='https://2.bp.blogspot.com/-kdynwKedKnI/XDwDsg-dImI/AAAAAAAAC_Q/-2Pl8FeH6g4cqsCZzkhMDjDkGCj_HGKQwCLcBGAs/s1600/reel-poster.png';
+	}
 	if((imageDataSource.indexOf("blogspot.com"))>1)
 	{
 		//	alert(imageDataSource.indexOf("blogspot.com"));
@@ -154,19 +160,29 @@ function chageSRCtofit(imageDataSource)
 	else
 	{
 		newUrl=imageDataSource;
-	}return (newUrl)
+	}
+	
+	return (newUrl)
 }
 
 
 function sendRequestServer(sort_type,increment,limit_member) {
+	
+
 console.log("req_server"+page);
  		 var fd = new FormData();
+		 var catCount=0;
+$( ".catalogId" ).each(function( index ) {
+  fd.append("InCatalog[]", $( this ).text() );
+});
         fd.append('keyword',keyword);
 		fd.append('sort_type',sort_type);
 		fd.append('increment',increment);
 		fd.append('limit_member',limit_member); 
-
+		fd.append('pageCount', page ); 
 		fd.append('offset', page*limit_member ); 
+		
+		
 		// $(".user_data").data('cpage')
         var http = new XMLHttpRequest();
 		var url = global_dir;
@@ -184,7 +200,6 @@ console.log("req_server"+page);
 						else
 						{
 							var	 res_obj=JSON.parse(http.responseText); 
-							/*<div align="center" class="poster_feed" ><a href="https://www.mov789.com/index.php?action=drive&id=62"><img src="https://2.bp.blogspot.com/-DC4HGwI3Cx4/W-EbqODu_NI/AAAAAAAAADI/Dn7AisRf_wMFR6IwJAQZPzk9rI_xK7p5ACK4BGAYYCw/s1600/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI%2540._V1_.jpg" /></a></div>*/
 							
 							fetchListFormJSONobj(res_obj);
 							page=page+1;
@@ -211,22 +226,79 @@ function getDocHeight() {
     );
 }
 
-/*
- $(window).scroll(function(){
-						   
-						   
-      if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-		// alert( $(".user_data").data('cpage')  );
+function originalSizeVideo(url,radio) {
+	
+			loadLog(global_dir+"?drive_url="+url ).then(function(respon) 
+			{
+						var obj=JSON.parse(respon);
+						getVideoDimensionsOf(obj).then(function(dimensions){
 
-		if(userWatchingUrl()==1){
-			
-			}
-		else
-		{
-          sendRequestServer( 'DATE','DESC', 5  );
-		}
-      }
- });    
+	
+	if(radio>0)
+	{
+		var dW=dimensions.width*radio;
+		var dH=dimensions.height*radio;
+	}else
+	{
+		var dW=dimensions.width+(dimensions.width*radio);
+		var dH=dimensions.height+(dimensions.height*radio);
+	}
+		console.log("Video width: " + dW) ;
+	console.log("Video height: " + dH) ;
+	console.log("poster: " + atob(poster)) ;
+	$('#frame_player').html('<table id="wrapper"><tr><td><video controls="controls" width="'+dW+'" height="'+dH+'" poster="'+atob(poster)+'" ><source src="'+obj+'" type="video/mp4"></video></td></tr></table>');});
+			});
 
-*/
+}
 
+function openFullscreen() {
+	var elem = document.getElementById("frame_player");
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+
+
+	function getVideoDimensionsOf(url){
+	return new Promise(function(resolve){
+		// create the video element
+		let video = document.createElement('video');
+
+		// place a listener on it
+		video.addEventListener( "loadedmetadata", function () {
+			// retrieve dimensions
+			let height = this.videoHeight;
+			let width = this.videoWidth;
+			// send back result
+			resolve({
+				height : height,
+				width : width
+			});
+		}, false );
+
+		// start download meta-datas
+		video.src = url;
+	});
+}
+
+
+// ---- Usation ---- //
+function loadLog(url) {
+	 try{
+      return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onload = () => resolve(xhr.responseText);
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
+  });
+ } catch(e){
+ }
+}
+  
