@@ -230,6 +230,10 @@ function getDocHeight() {
         D.body.clientHeight, D.documentElement.clientHeight
     );
 }
+function fixSizeVideo(x,y) {
+        $("iframe").width(x);
+		 $("iframe").height(y);
+}
 
 function originalSizeVideo(url,radio) {
 	
