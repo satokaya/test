@@ -193,3 +193,8 @@ margin: 10px auto;
     height: 100%;
 }
 
+.grab {
+   cursor: grab;
+}
+
+

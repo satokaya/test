@@ -8,7 +8,7 @@
 
 
 
-var global_dir="/xhr.php";
+var global_dir="xhr.php";
 var page=1,offset=15,lastQueryId=0;
 
 var keyword = getKeywordFormUrl('q');
@@ -137,7 +137,12 @@ function fetchListFormJSONobj(res_obj)
 {
 	$.each(res_obj, function(idx, obj) 
 	{
-								$('.main_con').append('<div align="center" class="poster_feed" ><a href="https://www.mov789.com/w/'+obj['id_msg']+'"><img src="'+chageSRCtofit(obj['screenshot'])+'" /></a><br><div class="poster_title">['+obj['subject']+']</div></div>');
+		var dirStr='w';
+		if(obj['video_type']=='p')
+		{
+				dirStr='p';
+		}
+								$('.main_con').append('<div align="center" class="poster_feed" ><a href="https://www.mov789.com/'+dirStr+'/'+obj['id_msg']+'"><img src="'+chageSRCtofit(obj['screenshot'])+'" /></a><br><div class="poster_title">['+obj['subject']+']</div></div>');
 	});
 }
 function chageSRCtofit(imageDataSource)
