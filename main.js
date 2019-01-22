@@ -235,6 +235,7 @@ function fixSizeVideo(x,y) {
 		 $("iframe").height(y);
 }
 
+/*
 function originalSizeVideo(url,radio) {
 	
 			loadLog(global_dir+"?drive_url="+url ).then(function(respon) 
@@ -258,7 +259,7 @@ function originalSizeVideo(url,radio) {
 	$('#frame_player').html('<table id="wrapper"><tr><td><video controls="controls" width="'+dW+'" height="'+dH+'" poster="'+atob(poster)+'" ><source src="'+obj+'" type="video/mp4"></video></td></tr></table>');});
 			});
 
-}
+}*/
 
 function openFullscreen() {
 	var elem = document.getElementById("frame_player");
@@ -272,7 +273,7 @@ function openFullscreen() {
     elem.msRequestFullscreen();
   }
 }
-
+/*
 
 	function getVideoDimensionsOf(url){
 	return new Promise(function(resolve){
@@ -295,9 +296,10 @@ function openFullscreen() {
 		video.src = url;
 	});
 }
-
+*/
 
 // ---- Usation ---- //
+/*
 function loadLog(url) {
 	 try{
       return new Promise((resolve, reject) => {
@@ -310,4 +312,4 @@ function loadLog(url) {
  } catch(e){
  }
 }
-  
+  */
