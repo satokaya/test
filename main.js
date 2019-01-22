@@ -33,7 +33,7 @@ var keyword = getKeywordFormUrl('q');
 var isWorking = 0;
 $( document ).ready(function()
 {
-	var dWidth =	($('#frame_player').width());
+	var dWidth =	($('#feed_con').width());
 	var dHeight =	dWidth*9/16;
 	        $("iframe").width(dWidth);
 		    $("iframe").height(dHeight);
