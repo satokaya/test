@@ -33,6 +33,11 @@ var keyword = getKeywordFormUrl('q');
 var isWorking = 0;
 $( document ).ready(function()
 {
+	var dWidth =	($('#frame_player').width());
+	var dHeight =	dWidth*9/16;
+	        $("iframe").width(dWidth);
+		    $("iframe").height(dHeight);
+		 
 	if ($("#social_group_btn").hasClass("social_group_btn")) {
 			var cUrl=window.location.href ;
 		  $('.social_group_btn').html('<a href="mailto:?Subject=เขียนอะไรบางอย่าง&amp;Body=เช่น มาดูเรื่องนี้สนุกดี '+cUrl+'" target="_blank"><img src="https://rawcdn.githack.com/satokaya/test/e91992228018b10973336b099c5125489dfdc1bb/sent-mail.png" /></a><a href="http://www.facebook.com/sharer.php?u='+cUrl+'" target="_blank"><img src="https://rawcdn.githack.com/satokaya/test/e91992228018b10973336b099c5125489dfdc1bb/facebook.png" /></a><a href="https://twitter.com/share?url='+cUrl+'&amp;text=เขียนอะไรบางอย่าง&amp;hashtags=mov789" target="_blank"><img src="https://rawcdn.githack.com/satokaya/test/e91992228018b10973336b099c5125489dfdc1bb/twitter-logo-on-black-background.png" /></a><a href="https://plus.google.com/share?url='+cUrl+'" target="_blank"><img src="https://rawcdn.githack.com/satokaya/test/e91992228018b10973336b099c5125489dfdc1bb/google-plus-symbol.png" /></a>');
